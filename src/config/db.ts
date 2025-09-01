@@ -1,13 +1,16 @@
-import { createPool } from 'mysql2';
-
 import * as dotenv from 'dotenv';
+import mysql from "mysql2";
 
 dotenv.config();
 
-export const connection = createPool({
+
+let db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
-    port: parseInt(process.env.DATABASE_PORT!),
     user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_NAME
+    password: process.env.DATABASE_PASSWORD
 });
+
+db.connect(function(err: any){
+    if (err) throw err; 
+    console.log("database connected succesfully");
+})
