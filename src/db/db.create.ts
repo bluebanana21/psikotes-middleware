@@ -5,9 +5,16 @@ create table users (
     id int PRIMARY KEY AUTO_INCREMENT,
     name varchar(255),
     email varchar(255),
-    DoB date,
+    password varchar(255),
+    DoB varchar(255),
     PoB varchar(255),
-    gender ENUM('Laki-laki','Perempuan')
+    gender ENUM('Laki-laki','Perempuan'),
+    role ENUM('user', 'admin', 'super-admin'),
+
+    verificationToken varchar(64),
+    verificationTokenExpires datetime,
+    isVerified boolean DEFAULT false,
+    emailVerificationFailed boolean DEFAULT false
 );
 
 create table surveys (

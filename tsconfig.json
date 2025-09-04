@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     // Environment setup & latest features
-    "lib": ["ESNext"],
+    "lib": ["ESNext","es5", "es6", "dom", "dom.iterable" ],
     "target": "ESNext",
     "module": "Preserve",
     "moduleDetection": "force",
