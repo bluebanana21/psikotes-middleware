@@ -1,5 +1,6 @@
 import express, { type Request, type Response } from "express";
 import bookRoutes from "./routes/bookRoutes.ts";
+import {connection} from "./config/db.ts";
 
 const app = express();
 
