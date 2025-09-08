@@ -5,6 +5,7 @@ create table users (
     id int PRIMARY KEY AUTO_INCREMENT,
     name varchar(255),
     email varchar(255),
+    password varchar(255),
     DoB date,
     PoB varchar(255),
     gender ENUM('Laki-laki','Perempuan')

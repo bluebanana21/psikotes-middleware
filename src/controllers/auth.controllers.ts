@@ -2,9 +2,10 @@ import express, { type Request, type Response } from "express";
 import bcrypt from "bcrypt";
 import db from "../config/db.ts";
 import type { RowDataPacket } from "mysql2";
-const router = express.Router();
 
-router.post("/register", async (req, res) => {
+const authRouter = express.Router();
+
+authRouter.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
@@ -19,7 +20,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.post("/login", (req, res) => {
+authRouter.post("/login", (req, res) => {
   const { email, password } = req.body;
   const query = `select * from users where email = ?`;
 db.query<RowDataPacket[]>(query, [email], async (err, results) => {
@@ -40,4 +41,4 @@ db.query<RowDataPacket[]>(query, [email], async (err, results) => {
 
 });
 
-export default router;
+export default authRouter;
