@@ -76,7 +76,7 @@ create table review(
 
 `;
 
-db.query(sql, function(err,result) {
+db.query(sql, function(err: any,result: any) {
     if (err) throw err;
     console.log("Table created")
 })
