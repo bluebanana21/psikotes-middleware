@@ -1,12 +1,14 @@
 import express, { type Request, type Response } from "express";
 import bookRoutes from "./routes/bookRoutes.ts";
-
+import {connection} from "./config/db.ts";
+import router from "../src/controllers/auth.controllers.ts"
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use("/api", bookRoutes);
+app.use('/api', router);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Welcome to Node.js + typescript API");

@@ -1,15 +1,26 @@
 import * as dotenv from 'dotenv';
-import mysql from "mysql2";
+
+import { createConnection } from 'mysql2';
 
 dotenv.config();
 
-const db = mysql.createConnection({
+export const connection = createConnection({
+
     host: process.env.DATABASE_HOST,
     database: process.env.DATABASE_NAME,
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
-    multipleStatements: true
+    database: process.env.DATABASE_NAME,
+  multipleStatements: true
 });
+
+connection.connect((err) => {
+    if (err) {
+        throw err;
+    } else{
+        console.log("connected to database")
+    }
+})
 
 db.connect(function(err: any){
     if (err){
@@ -20,3 +31,4 @@ db.connect(function(err: any){
 });
 
 export default db;
+
