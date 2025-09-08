@@ -10,7 +10,6 @@ export const connection = createConnection({
     database: process.env.DATABASE_NAME,
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_NAME,
   multipleStatements: true
 });
 
@@ -22,7 +21,7 @@ connection.connect((err) => {
     }
 })
 
-db.connect(function(err: any){
+connection.connect(function(err: any){
     if (err){
         console.error(`error: ${err} `);
     } else {
@@ -30,5 +29,5 @@ db.connect(function(err: any){
     }
 });
 
-export default db;
+export default connection;
 
